@@ -4,6 +4,8 @@
 
 using namespace std;
 
+//changes 
+
 class Solution {
 public:
     double findMaxAverage(vector<int>& nums, int k) {
