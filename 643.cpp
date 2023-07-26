@@ -4,58 +4,52 @@
 
 using namespace std;
 
-//changes 
+
 
 class Solution {
 public:
     double findMaxAverage(vector<int>& nums, int k) {
 
       int pos=0;
+      int pos_init =0;
       double answer =0.0;
       double highest =0;
       double prev =0;
-      while((pos+k)<=nums.size())
+
+      if(nums.size()==1)
       {
-           int numb = pos+k;
-            // std::cout<<"pos + k: "<<numb<<std::endl;
-            // std::cout<<"num elements "<<nums.size()<<std::endl;
-
-              // std::cout<<"pos "<<pos<<std::endl;
-            for(int i=pos;i<k+pos;i++)
-            {
-                prev += nums[i];
-                // std::cout<<"what was added "<<nums[i]<<std::endl;
-            }
-
-          if(nums.size() == k)
-          {
-            double ans2= prev/k;
-            //  std::cout<<"prev/k: "<<ans2<<std::endl; 
-            return ans2; 
-          }
-
-          if(pos==0)
-          {
-            highest = prev;
-          }  
-
-          if(prev>highest)
-          {
-
-              highest = prev;
-              //  std::cout<<"sum :"<<prev<<std::endl;
-          }
-
-
-          prev=0;
-          pos++;
-          
+        // std::cout<<"Answer :"<<nums[0]<<std::endl;
+        return nums[0];
       }
+
+      for(int i=0;i<k;++i)
+      {
+        std::cout<<"add "<<nums[i]<<std::endl;
+        highest+=nums[i];
+      }
+
+      std::cout<<"sum "<<highest<<std::endl;
+      prev = highest;
+      
+      while((pos+k)<nums.size())
+      {
+        prev= prev-nums[pos];
+        std::cout<<"sum2 "<<prev<<std::endl;
+        prev= prev + nums[pos+k];
+        std::cout<<"sum3 "<<prev<<std::endl;
+        pos++;
+        if(prev>highest)
+        {
+          highest = prev;
+          std::cout<<"highest"<<highest<<std::endl;
+        }
+      }
+      
 
     
 
       answer = highest/k;
-       std::cout<<"Answer :"<<answer<<std::endl;
+        std::cout<<"Answer :"<<answer<<std::endl;
       return answer;
 
     }
@@ -68,8 +62,8 @@ public:
 int main()
 {
     Solution n;
-    int k = 3;
+    int k = 4;
    //vector<int> nums ={0,1,1,3,3}; //ans 2 , k =4
-   vector<int> nums = {-1,-2,-3,-4,-5};
+   vector<int> nums = {1,12,-5,-6,50,3};
    n.findMaxAverage(nums,k);
 }
