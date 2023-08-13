@@ -34,6 +34,22 @@ public:
         if(it1 != diff2.end())
         {
             std::cout<<"z appear : "<<z<<std::endl;
+        }
+        else{
+            std::cout<<"z doesn't appear : "<<z<<std::endl;
+        }        
+    }
+
+      for(int g : nums2)
+    {
+
+        it2 = diff1.find(g);
+        if(it2 != diff1.end())
+        {
+            std::cout<<"g appear : "<<g<<std::endl;
+        }
+        else{
+            std::cout<<"g doesn't appear : "<<g<<std::endl;
         }        
     }
 
@@ -46,7 +62,7 @@ int main()
 {
 
     Solution n;
-    vector<int> num1 = {1,2,3};
+    vector<int> num1 = {1,2,3,5,7};
     vector<int> num2 = {4,3,2};
     n.findDifference(num1,num2);
 
